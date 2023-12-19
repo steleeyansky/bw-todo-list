@@ -1,0 +1,14 @@
+{
+    "name": "some-bw-todo-vendor-name-here/bw-todo-list",
+    "description": "A WordPress To-Do List plugin.",
+    "type": "wordpress-plugin",
+    "autoload": {
+        "psr-4": {
+            "BW\\TodoList\\": "admin/",
+            "BW\\TodoList\\View\\": "view/"
+        }
+    },
+    "config": {
+        "secure-http": false
+    }
+}
