@@ -6,8 +6,18 @@ use BW\TodoList\Models\TodoItem;
 class AdminPage {
     public function __construct() {
         add_action('admin_menu', [$this, 'addAdminMenu']);
+        add_action('admin_enqueue_scripts', [$this, 'enqueueAssets']);
     }
 
+    public function enqueueAssets() {
+        wp_enqueue_script('jquery');
+        wp_enqueue_script('todo-ajax', plugin_dir_url(__FILE__) . 'assets/js/todo-ajax.js', ['jquery'], null, true);
+        wp_localize_script('todo-ajax', 'todo_ajax_obj', array(
+            'ajax_url' => admin_url('admin-ajax.php')
+        ));
+        wp_enqueue_style('todo-popup-style', plugin_dir_url(__FILE__) . 'assets/styles/popup.css');
+
+    }
 
     public function addAdminMenu() {
         add_menu_page(
@@ -22,9 +32,10 @@ class AdminPage {
     }
 
     public function renderAdminPage() {
+        $current_user_id = get_current_user_id();
+        $tasks = TodoItem::read($current_user_id);
+    
         require_once plugin_dir_path(__FILE__) . 'templates/admin-page.php';
-
     }
 }
-
 
