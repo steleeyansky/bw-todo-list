@@ -8,14 +8,20 @@
  * Author URI: http://author-url.com
  */
 
+define('BW_PLUGIN_DIR', plugin_dir_path(__FILE__));
+define('BW_PLUGIN_DIR_URL', plugin_dir_url(__FILE__));
+
 require_once __DIR__ . '/vendor/autoload.php';
-require_once __DIR__ . '/includes/functions.php';
 
 use BW\TodoList\DatabaseManager;
 use BW\TodoList\AdminPage;
+use BW\TodoList\Includes\RenderTodoShortcode;
 
 // Hook the DatabaseManager's createTable method to plugin activation
 register_activation_hook(__FILE__, [DatabaseManager::class, 'createTable']);
 
 $adminPage = new AdminPage();
+
+add_action('init', [new RenderTodoShortcode(), '__construct']);
+
 
