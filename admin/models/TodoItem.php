@@ -36,21 +36,25 @@ class TodoItem
         }
     }
     
-
     public static function update($id, $data)
     {
         global $wpdb;
         $table_name = $wpdb->prefix . 'tasks';
-
-        $wpdb->update(
+    
+        $updated = $wpdb->update(
             $table_name,
             [
                 'title' => sanitize_text_field($data['title']),
-                'description' => sanitize_textarea_field($data['description'])
+                'description' => sanitize_textarea_field($data['description']),
             ],
-            ['id' => $id]
+            ['id' => $id],
+            ['%s', '%s'], // Data format for 'title' and 'description'
+            ['%d']        // Where format for 'id'
         );
+    
+        return $updated !== false; 
     }
+    
 
     public static function delete($id)
     {
@@ -60,4 +64,3 @@ class TodoItem
         $wpdb->delete($table_name, ['id' => $id]);
     }
 }
-

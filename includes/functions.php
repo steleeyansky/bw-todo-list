@@ -24,15 +24,15 @@ function add_todo_task_callback()
     // Perform the add operation
     try {
 
-        
+
         $task_id = BW\TodoList\Models\TodoItem::create([
             'title' => $title,
             'description' => $description
         ]);
-   
+
         if ($task_id) {
             $task_html = get_task_html($task_id, $title, $description);
-            
+
             wp_send_json_success(['html' => $task_html]);
         } else {
             throw new Exception('Failed to create the task.');
@@ -44,7 +44,32 @@ function add_todo_task_callback()
 
 function edit_todo_task_callback()
 {
-    // Handle editing a task
+    // Check for required permissions
+    if (!current_user_can('manage_options')) {
+        wp_send_json_error(['message' => 'Insufficient permissions']);
+        return;
+    }
+  
+    $task_id = isset($_POST['task_id']) ? intval($_POST['task_id']) : 0;
+   
+    if ($task_id <= 0) {
+        wp_send_json_error(['message' => 'Invalid Task ID']);
+        return;
+    }
+    $title = sanitize_text_field($_POST['title']);
+    $description = sanitize_textarea_field($_POST['description']);
+
+    $success = BW\TodoList\Models\TodoItem::update($task_id, [
+        'title' => $title,
+        'description' => $description
+    ]);
+
+    if ($success) {
+        $task_html = get_task_html($task_id, $title, $description);
+        wp_send_json_success(['html' => $task_html, 'task_id' => $task_id]);
+    } else {
+        wp_send_json_error(['message' => 'An error occurred while updating the task']);
+    }
 }
 
 function delete_todo_task_callback()
