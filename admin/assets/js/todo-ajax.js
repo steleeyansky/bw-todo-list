@@ -85,6 +85,8 @@ $('#task-form').submit(function (event) {
                 $('tr[data-task-id="' + currentEditingTaskId + '"]').replaceWith(response.data.html);
                 currentEditingTaskId = null; // Reset the editing task ID
             } else {
+                // Append a new task 
+                $('.js-no-tasks').remove();
                 $('#the-list').append(response.data.html);
             }
             // Hide the modal and reset the form

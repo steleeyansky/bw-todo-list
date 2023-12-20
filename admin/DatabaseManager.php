@@ -9,18 +9,17 @@ class DatabaseManager {
         $table_name = $wpdb->prefix . 'tasks';
         $charset_collate = $wpdb->get_charset_collate();
 
-      $sql = "CREATE TABLE IF NOT EXISTS $table_name (
-            id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-            user_id bigint(20) unsigned NOT NULL,
+        $sql = "CREATE TABLE $table_name (
+            id mediumint(9) NOT NULL AUTO_INCREMENT,
+            user_id bigint(20) NOT NULL,
             title varchar(255) NOT NULL,
-            description text,
+            description text NOT NULL,
             created_at datetime DEFAULT CURRENT_TIMESTAMP NOT NULL,
             updated_at datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL,
-            PRIMARY KEY (id),
-            KEY user_id (user_id),
-            CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES {$$wpdb->prefix}users(ID)
+            PRIMARY KEY  (id),
+            FOREIGN KEY (user_id) REFERENCES {$wpdb->prefix}users(ID) ON DELETE CASCADE
         ) $charset_collate;";
-    
+
         require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
         dbDelta($sql);
     }
@@ -34,4 +33,3 @@ class DatabaseManager {
         $wpdb->query($sql);
     }
 }
-

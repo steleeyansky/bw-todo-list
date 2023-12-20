@@ -3,6 +3,7 @@ namespace BW\TodoList;
 
 use BW\TodoList\Models\TodoItem;
 
+
 class AdminPage {
     public function __construct() {
         add_action('admin_menu', [$this, 'addAdminMenu']);
@@ -35,7 +36,10 @@ class AdminPage {
         $current_user_id = get_current_user_id();
         $tasks = TodoItem::read($current_user_id);
     
+    
         require_once plugin_dir_path(__FILE__) . 'templates/admin-page.php';
+
+
     }
 }
 
