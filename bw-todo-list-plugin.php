@@ -33,3 +33,14 @@ $adminPage = new AdminPage();
 
 add_action('init', [new RenderTodoShortcode(), '__construct']);
 
+add_action('admin_init', function() {
+    if (isset($_POST['import_todos']) && check_admin_referer('bw_import_todos', 'bw_import_todos_nonce')) {
+        $adminPage = new AdminPage();
+        $adminPage->importTodos();
+    }
+
+    if (isset($_POST['export_todos']) && check_admin_referer('bw_export_todos', 'bw_export_todos_nonce')) {
+        $adminPage = new AdminPage();
+        $adminPage->exportTodos();
+    }
+});
