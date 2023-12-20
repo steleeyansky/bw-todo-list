@@ -7,6 +7,7 @@
                 <tr>
                     <th scope="col" id="title" class="manage-column column-title">Todo Title</th>
                     <th scope="col" id="description" class="manage-column column-description">Description</th>
+                    <th scope="col" id="priority" class="manage-column column-priority">Priority</th>
                     <th scope="col" id="actions" class="manage-column column-actions">Actions</th>
                 </tr>
             </thead>
@@ -23,6 +24,10 @@
                             <td class="description column-description" data-colname="Description">
                                 <?php echo esc_html($task['description']); ?>
                             </td>
+                            <td class="priority column-priority" data-colname="Priority">
+                                <?php echo esc_html($task['priority']); ?>
+                            </td>
+                            
                             <td class="actions column-actions" data-colname="Actions">
                                 <button class="button edit-task" data-id="<?php echo esc_attr($task['id']); ?>">Edit</button>
                                 <button class="button delete-task" data-id="<?php echo esc_attr($task['id']); ?>">Delete</button>

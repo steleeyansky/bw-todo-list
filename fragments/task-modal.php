@@ -10,6 +10,14 @@
             <textarea id="task-description" name="description" rows="5" class="left-aligned-text"></textarea>
         </div>
         <div class="form-field">
+            <label for="task-priority">Priority:</label>
+            <select id="task-priority" name="priority">
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+        </div>
+        <div class="form-field">
             <input type="submit" value="Save Todo" class="button button-primary">
         </div>
     </form>

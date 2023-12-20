@@ -23,11 +23,10 @@ use Carbon_Fields\Carbon_Fields;
 // Hook the DatabaseManager's createTable method to plugin activation
 register_activation_hook(__FILE__, [DatabaseManager::class, 'createTable']);
 
-
-Carbon_Fields::boot();
-
-require_once plugin_dir_path(__FILE__) . 'blocks/bw-todo-list-block.php';
-
+add_action('after_setup_theme', function() {
+    Carbon_Fields::boot();
+    require_once plugin_dir_path(__FILE__) . 'blocks/bw-todo-list-block.php';
+});
 
 $adminPage = new AdminPage();
 

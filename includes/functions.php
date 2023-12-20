@@ -15,6 +15,7 @@ function add_todo_task_callback()
     // Validate and sanitize input
     $title = isset($_POST['title']) ? sanitize_text_field($_POST['title']) : '';
     $description = isset($_POST['description']) ? sanitize_textarea_field($_POST['description']) : '';
+    $priority = isset($_POST['priority']) ? sanitize_text_field($_POST['priority']) : 'Low'; // Default to 'Low' if not provided
 
     if (empty($title)) {
         wp_send_json_error(['message' => 'Title is required']);
@@ -23,16 +24,14 @@ function add_todo_task_callback()
 
     // Perform the add operation
     try {
-
-
         $task_id = BW\TodoList\Models\TodoItem::create([
             'title' => $title,
-            'description' => $description
+            'description' => $description,
+            'priority' => $priority, 
         ]);
 
         if ($task_id) {
-            $task_html = get_task_html($task_id, $title, $description);
-
+            $task_html = get_task_html($task_id, $title, $description, $priority);
             wp_send_json_success(['html' => $task_html]);
         } else {
             throw new Exception('Failed to create the task.');
@@ -41,6 +40,7 @@ function add_todo_task_callback()
         wp_send_json_error(['message' => $e->getMessage()]);
     }
 }
+
 
 function edit_todo_task_callback()
 {
@@ -58,14 +58,16 @@ function edit_todo_task_callback()
     }
     $title = sanitize_text_field($_POST['title']);
     $description = sanitize_textarea_field($_POST['description']);
-
+    $priority = isset($_POST['priority']) ? sanitize_text_field($_POST['priority']) : 'Low';
+    
     $success = BW\TodoList\Models\TodoItem::update($task_id, [
         'title' => $title,
-        'description' => $description
+        'description' => $description,
+        'priority' => $priority,
     ]);
 
     if ($success) {
-        $task_html = get_task_html($task_id, $title, $description);
+        $task_html = get_task_html($task_id, $title, $description, $priority);
         wp_send_json_success(['html' => $task_html, 'task_id' => $task_id]);
     } else {
         wp_send_json_error(['message' => 'An error occurred while updating the task']);
@@ -101,13 +103,14 @@ function delete_todo_task_callback()
     }
 }
 
-function get_task_html($task_id, $title, $description)
+function get_task_html($task_id, $title, $description, $priority = 'Low')
 {
     ob_start();
 ?>
     <tr data-task-id="<?php echo esc_attr($task_id); ?>">
         <td class="title column-title" data-colname="Title"><?php echo esc_html($title); ?></td>
         <td class="description column-description" data-colname="Description"><?php echo esc_html($description); ?></td>
+        <td class="priority column-priority" data-colname="Priority"><?php echo esc_html($priority); ?></td>
         <td class="actions column-actions" data-colname="Actions">
             <button class="button edit-task" data-id="<?php echo esc_attr($task_id); ?>">Edit</button>
             <button class="button delete-task" data-id="<?php echo esc_attr($task_id); ?>">Delete</button>

@@ -76,7 +76,9 @@ $('#task-form').submit(function (event) {
     let formData = {
         title: $('#task-title').val(),
         description: $('#task-description').val(),
+        priority: $('#task-priority').val(),
         task_id: currentEditingTaskId
+        
     };
 
     makeAjaxCall(action, formData, function (response) {
@@ -87,6 +89,7 @@ $('#task-form').submit(function (event) {
             } else {
                 // Append a new task 
                 $('.js-no-tasks').remove();
+                console.log( response.data);
                 $('#the-list').append(response.data.html);
             }
             // Hide the modal and reset the form
