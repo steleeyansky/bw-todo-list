@@ -64,8 +64,8 @@ After activating the plugin, you can start using it to manage your tasks.
 
 ### Using the Shortcode:
 
-- Use the shortcode `[bw-todo-list]` in any page or post to display the current user's To-Do List.
-- You can also specify a color for the list by adding a `color` attribute, e.g., `[bw-todo-list color="blue"]`.
+- Use the shortcode `[bw-render-todo]` in any page or post to display the current user's To-Do List.
+- You can also specify a color for the list by adding a `color` attribute, e.g., `[bw-todo-list color="#5711d1"]`.
 
 
 ### Gutenberg Block:
