@@ -33,3 +33,21 @@
     border: 1px solid #ccc;
     border-top: none;
 }
+
+.wrap {
+    padding: 20px; /* Adds space inside the container */
+}
+
+.bw-todo-list-search {
+    float: right;
+    margin-bottom: 10px; 
+}
+
+#todo-sort {
+    width: auto; /* Set this to 'auto' or specify a width that fits the content */
+}
+
+.wrap .button-primary {
+    margin-top: 10px;
+    /* float: right */
+}

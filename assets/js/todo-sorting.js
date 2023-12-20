@@ -27,3 +27,4 @@ jQuery(document).ready(function ($) {
         $tbody.empty().append(rows);
     });
 });
+
