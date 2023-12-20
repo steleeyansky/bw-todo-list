@@ -16,5 +16,8 @@
     },
     "config": {
         "secure-http": false
+    },
+    "require": {
+        "htmlburger/carbon-fields": "^3.6"
     }
 }
