@@ -10,6 +10,7 @@ class ComposerStaticInit00bf364117152e7af375986b945597ac
         'B' => 
         array (
             'BW\\TodoList\\View\\' => 17,
+            'BW\\TodoList\\Helpers\\' => 20,
             'BW\\TodoList\\' => 12,
         ),
     );
@@ -18,6 +19,10 @@ class ComposerStaticInit00bf364117152e7af375986b945597ac
         'BW\\TodoList\\View\\' => 
         array (
             0 => __DIR__ . '/../..' . '/view',
+        ),
+        'BW\\TodoList\\Helpers\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/helpers',
         ),
         'BW\\TodoList\\' => 
         array (
