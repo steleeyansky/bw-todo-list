@@ -6,10 +6,16 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit00bf364117152e7af375986b945597ac
 {
+    public static $files = array (
+        '1e45c38cecdd381ec8013173106532f6' => __DIR__ . '/../..' . '/includes/functions.php',
+        '340e7cded59b22c4e85c9ca93eab1e1e' => __DIR__ . '/../..' . '/includes/enqueue.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
         'B' => 
         array (
             'BW\\TodoList\\View\\' => 17,
+            'BW\\TodoList\\Includes\\' => 21,
             'BW\\TodoList\\Helpers\\' => 20,
             'BW\\TodoList\\' => 12,
         ),
@@ -19,6 +25,10 @@ class ComposerStaticInit00bf364117152e7af375986b945597ac
         'BW\\TodoList\\View\\' => 
         array (
             0 => __DIR__ . '/../..' . '/view',
+        ),
+        'BW\\TodoList\\Includes\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/includes',
         ),
         'BW\\TodoList\\Helpers\\' => 
         array (

@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'BW\\TodoList\\View\\' => array($baseDir . '/view'),
+    'BW\\TodoList\\Includes\\' => array($baseDir . '/includes'),
     'BW\\TodoList\\Helpers\\' => array($baseDir . '/helpers'),
     'BW\\TodoList\\' => array($baseDir . '/admin'),
 );
