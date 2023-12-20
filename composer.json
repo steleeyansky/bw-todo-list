@@ -6,8 +6,13 @@
         "psr-4": {
             "BW\\TodoList\\": "admin/",
             "BW\\TodoList\\View\\": "view/",
-            "BW\\TodoList\\Helpers\\": "helpers/"
-        }
+            "BW\\TodoList\\Helpers\\": "helpers/",
+            "BW\\TodoList\\Includes\\": "includes/"
+        },
+        "files": [
+            "includes/functions.php",
+            "includes/enqueue.php"
+        ]
     },
     "config": {
         "secure-http": false
