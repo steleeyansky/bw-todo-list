@@ -12,11 +12,11 @@ class AdminPage {
 
     public function enqueueAssets() {
         wp_enqueue_script('jquery');
-        wp_enqueue_script('todo-ajax', plugin_dir_url(__FILE__) . 'assets/js/todo-ajax.js', ['jquery'], null, true);
+        wp_enqueue_script('todo-ajax', BW_PLUGIN_DIR_URL . 'assets/js/todo-ajax.js', ['jquery'], null, true);
         wp_localize_script('todo-ajax', 'todo_ajax_obj', array(
             'ajax_url' => admin_url('admin-ajax.php')
         ));
-        wp_enqueue_style('todo-popup-style', plugin_dir_url(__FILE__) . 'assets/styles/popup.css');
+        wp_enqueue_style('todo-popup-style', BW_PLUGIN_DIR_URL . 'assets/styles/popup.css');
 
     }
 
