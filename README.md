@@ -12,16 +12,16 @@ To install the BW Todo List plugin, follow these steps:
 
 - Download the ZIP file of the plugin from the repository or clone it using `git clone`.
 
-### Install Dependencies:
-
-- Navigate to the plugin directory in your terminal or command prompt and run `composer install` to install the required PHP dependencies.
-
 ### Upload to WordPress:
 
 - Log in to your WordPress admin panel.
 - Navigate to `Plugins` > `Add New`.
 - Click the `Upload Plugin` button at the top of the page.
 - Select the ZIP file of the plugin (if you downloaded it) and click `Install Now`.
+
+### Install Dependencies:
+
+- Navigate to the plugin directory in your terminal or command prompt and run `composer install` to install the required PHP dependencies.
 
 ### Activate the Plugin:
 
