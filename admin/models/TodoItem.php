@@ -16,7 +16,8 @@ class TodoItem
         $wpdb->insert($table_name, [
             'title' => sanitize_text_field($data['title']),
             'description' => sanitize_textarea_field($data['description']),
-            'user_id' => get_current_user_id()
+            'user_id' => get_current_user_id(),
+            'priority' => sanitize_text_field($data['priority'] ?? 'Low') // Default to 'Low'
         ]);
 
 
@@ -46,9 +47,10 @@ class TodoItem
             [
                 'title' => sanitize_text_field($data['title']),
                 'description' => sanitize_textarea_field($data['description']),
+                'priority' => sanitize_text_field($data['priority']),
             ],
             ['id' => $id],
-            ['%s', '%s'], // Data format for 'title' and 'description'
+            ['%s', '%s', '%s'], // Data format for 'title' and 'description'
             ['%d']        // Where format for 'id'
         );
     
