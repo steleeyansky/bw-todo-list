@@ -1,6 +1,16 @@
     <div class="wrap">
         <h1>BW Todo List</h1>
 
+        <div>
+            <div class="bw-todo-list-sort">
+                <label for="todo-sort">Sort by Priority:</label>
+                <select id="todo-sort" name="todo-sort">
+                    <option value="asc">High</option>
+                    <option value="desc">Low</option>
+                </select>
+                <button id="apply-sort" class="button">Apply</button>
+            </div>
+        </div>
 
         <table class="wp-list-table widefat fixed striped">
             <thead>
@@ -27,7 +37,7 @@
                             <td class="priority column-priority" data-colname="Priority">
                                 <?php echo esc_html($task['priority']); ?>
                             </td>
-                            
+
                             <td class="actions column-actions" data-colname="Actions">
                                 <button class="button edit-task" data-id="<?php echo esc_attr($task['id']); ?>">Edit</button>
                                 <button class="button delete-task" data-id="<?php echo esc_attr($task['id']); ?>">Delete</button>

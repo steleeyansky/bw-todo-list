@@ -17,6 +17,7 @@ class AdminPage
         wp_enqueue_script('jquery');
         wp_enqueue_script('todo-ajax', BW_PLUGIN_DIR_URL . 'assets/js/todo-ajax.js', ['jquery'], null, true);
         wp_enqueue_script('todo-switcher', BW_PLUGIN_DIR_URL . 'assets/js/tab-switcher.js', ['jquery'], null, true);
+        wp_enqueue_script('todo-sorting', BW_PLUGIN_DIR_URL . 'assets/js/todo-sorting.js', ['jquery'], null, true);
         wp_localize_script('todo-ajax', 'todo_ajax_obj', array(
             'ajax_url' => admin_url('admin-ajax.php')
         ));

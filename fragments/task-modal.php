@@ -13,7 +13,6 @@
             <label for="task-priority">Priority:</label>
             <select id="task-priority" name="priority">
                 <option value="Low">Low</option>
-                <option value="Medium">Medium</option>
                 <option value="High">High</option>
             </select>
         </div>

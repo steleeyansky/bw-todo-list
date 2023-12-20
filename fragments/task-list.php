@@ -14,6 +14,10 @@
             <p>
                 <?php echo  esc_html($task['description']);  ?>
             </p>
+
+            <p>
+                <?php echo esc_html($task['priority']); ?>
+            </p>
         </div>
     <?php endforeach; ?>
 </div>
